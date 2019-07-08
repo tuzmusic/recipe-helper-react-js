@@ -1,3 +1,5 @@
 // @flow
 
-export default class Recipe {}
+export default class Recipe {
+  title: string;
+}
