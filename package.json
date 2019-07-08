@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "flow-typed": "^2.5.2",
-    "flow-types": "^1.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",

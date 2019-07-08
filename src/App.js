@@ -1,10 +1,21 @@
+// @flow
 import React from "react";
-import CookView from "./containers/CookView";
+import { combineReducers, createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import createSagaMiddleware from "redux-saga";
+import recipes from "../src/redux/reducers/recipesReducer";
+import RecipeShowPage from "./screens/RecipeShowPage";
 
-const recipe = require("./api-data/recipes/chocolate-chip-cookies.json");
+const combinedReducer = combineReducers({ recipes });
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(combinedReducer, {}, applyMiddleware(sagaMiddleware));
 
-const App = () => {
-  return <CookView recipe={recipe} />;
+export const App = () => {
+  return (
+    <Provider store={store}>
+      <RecipeShowPage />
+    </Provider>
+  );
 };
 
 export default App;
