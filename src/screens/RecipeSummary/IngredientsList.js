@@ -1,6 +1,9 @@
+// @flow
 import React from "react";
 
-const IngredientsList = ({ ingredients }) => {
+type Props = { ingredients: Object[] };
+
+export const IngredientsList = ({ ingredients }: Props) => {
   return (
     <div className="ingredients-list">
       <h3>Ingredients</h3>
