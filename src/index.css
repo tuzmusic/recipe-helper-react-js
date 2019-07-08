@@ -1,3 +1,43 @@
+.cook-view {
+  height: 100%;
+  display: flex;
+  background-color: navy;
+  color: white;
+  flex: 1;
+  margin: 10px;
+  padding: 0px;
+}
+
+div.cook-view > div {
+  border: 3px solid white;
+  padding: 10px;
+}
+.instructions-list li {
+  margin-top: 0.5em;
+}
+.ingredients-list li {
+  list-style: none;
+}
+
+.recipe-summary {
+  flex: 1;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.recipe-session {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.recipe-session button {
+  margin: 0.5em;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
