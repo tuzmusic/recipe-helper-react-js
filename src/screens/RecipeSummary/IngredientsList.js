@@ -1,7 +1,8 @@
 // @flow
 import React from "react";
+import type Ingredient from "../../models/Ingredient";
 
-type Props = { ingredients: Object[] };
+type Props = { ingredients: Ingredient[] };
 
 export const IngredientsList = ({ ingredients }: Props) => {
   return (

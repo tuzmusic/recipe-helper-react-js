@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "flow-typed": "^2.5.2",
+    "flow-types": "^1.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-redux": "^7.1.0",
+    "react-scripts": "3.0.1",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,6 +47,8 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "flow-bin": "0.102.0",
     "jest-enzyme": "^7.0.2",
-    "prettier-eslint": "^9.0.0"
+    "prettier-eslint": "^9.0.0",
+    "redux-mock-store": "^1.5.3",
+    "redux-saga-tester": "^1.0.493"
   }
 }
