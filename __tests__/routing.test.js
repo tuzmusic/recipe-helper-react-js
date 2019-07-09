@@ -11,8 +11,6 @@ describe("App routing", () => {
   });
   it("should navigate to the recipe show page when a recipe is clicked", () => {
     links.at(0).simulate("click");
-    expect(wrapper.find("#recipe-title").text()).toEqual(
-      "Chocolate Chip Cookies"
-    );
+    expect(wrapper.find("h1").text()).toEqual("Chocolate Chip Cookies");
   });
 });
