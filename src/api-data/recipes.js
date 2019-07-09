@@ -1,5 +1,6 @@
 export default [
   {
+    id: "1",
     title: "Chocolate Chip Cookies",
     slug: "chocolate-chip-cookies",
     ingredients: [
@@ -14,6 +15,7 @@ export default [
     ]
   },
   {
+    id: "2",
     title: "Guacomole",
     slug: "guacomole",
     ingredients: [

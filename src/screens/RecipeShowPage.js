@@ -4,9 +4,16 @@ import CookView from "../containers/CookView";
 
 export class RecipeShowPage extends Component {
   render() {
-    return <CookView recipe={this.props.recipe} />;
+    const recipe = this.props.recipes.find(r => {
+      console.log(r);
+
+      return r.id === this.props.match.params.id;
+    });
+    console.log(this.props.match.params);
+
+    return <CookView recipe={recipe} />;
   }
 }
-export default connect(({ recipes }) => ({ recipe: recipes.recipes[0] }))(
+export default connect(({ recipes }) => ({ recipes: recipes.recipes }))(
   RecipeShowPage
 );

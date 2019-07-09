@@ -1,7 +1,7 @@
 // @flow
-
 import React from "react";
 import Recipe from "../../models/Recipe";
+import { Link } from "react-router-dom";
 
 type Props = { recipes: Recipe[] };
 
@@ -11,7 +11,13 @@ export const RecipeList = ({ recipes }: Props) => {
       <h1>Recipes</h1>
       <ul className="recipe-list">
         {recipes.map((recipe, i) => {
-          return <li key={i}>{recipe.title}</li>;
+          return (
+            <li key={i}>
+              <Link to={`/recipes/${recipe.id}/${recipe.slug}`}>
+                {recipe.title}
+              </Link>
+            </li>
+          );
         })}
       </ul>
     </div>

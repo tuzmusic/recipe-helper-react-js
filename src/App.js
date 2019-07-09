@@ -6,6 +6,7 @@ import createSagaMiddleware from "redux-saga";
 import recipes from "../src/redux/reducers/recipesReducer";
 import RecipeShowPage from "./screens/RecipeShowPage";
 import RecipeIndexPage from "./screens/RecipeIndexPage/RecipeIndexPage";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const combinedReducer = combineReducers({ recipes });
 const sagaMiddleware = createSagaMiddleware();
@@ -15,7 +16,15 @@ export const App = () => {
   return (
     <Provider store={store}>
       <div style={styles.appContainer}>
-        <RecipeIndexPage />
+        <Router>
+          <Route exact path="/" component={RecipeIndexPage} />
+          <Route
+            path="/recipes/:id/:slug"
+            render={routerProps => {
+              return <RecipeShowPage {...routerProps} />;
+            }}
+          />
+        </Router>
       </div>
     </Provider>
   );
@@ -26,8 +35,6 @@ export default App;
 const styles = {
   appContainer: {
     flex: 1,
-    padding: 10,
-    paddingHorizontal: 20,
     backgroundColor: "navy",
     color: "white"
   }

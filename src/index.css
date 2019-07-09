@@ -8,6 +8,10 @@
   padding: 0px;
 }
 
+a {
+  color: white;
+}
+
 div.cook-view > div {
   border: 3px solid white;
   padding: 10px;
