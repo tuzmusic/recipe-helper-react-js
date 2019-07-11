@@ -19,8 +19,6 @@ class CookView extends Component {
   }
 
   render() {
-    console.log(this.props.recipe.title);
-
     return (
       <div className="cook-view">
         <RecipeSummary
