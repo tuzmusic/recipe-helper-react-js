@@ -1,28 +1,10 @@
 import React from "react";
-import { withRouter } from "react-router";
-import { Link, Route, Router, Switch } from "react-router-dom";
-import { createMemoryHistory } from "history";
-import {
-  render,
-  fireEvent,
-  waitForElement,
-  cleanup
-} from "@testing-library/react";
+import { render, fireEvent, cleanup, route } from "../../test-utils";
 import "@testing-library/jest-dom/extend-expect";
 import { RecipeIndexPage as Index } from "../../src/screens/RecipeIndexPage/RecipeIndexPage";
 import recipes from "../../src/api-data/recipes";
 
 afterEach(cleanup);
-
-function route(
-  ui,
-  {
-    route = "/",
-    history = createMemoryHistory({ initialEntries: [route] })
-  } = {}
-) {
-  return { ...render(<Router history={history}>{ui}</Router>), history };
-}
 
 describe("Recipe Index Page", () => {
   it("should render the index page with the list of recipes", () => {

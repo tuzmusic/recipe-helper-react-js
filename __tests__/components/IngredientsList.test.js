@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import IngredientList from "../../src/screens/RecipeSummary/IngredientsList";
+import IngredientList from "../../src/screens/RecipeShowPage/CookView/RecipeSummary/IngredientsLista";
 
 describe("<IngredientList/>", function() {
   const ingredients = [
