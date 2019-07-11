@@ -2,7 +2,10 @@ module.exports = {
   verbose: true,
   clearMocks: true,
   collectCoverage: true,
-  setupFilesAfterEnv: ["<rootDir>/setupTest.js"],
+  setupFilesAfterEnv: [
+    "@testing-library/react/cleanup-after-each",
+    "<rootDir>/setupTest.js"
+  ],
   transform: {
     "^.+\\.js$": "babel-jest"
   },

@@ -1,10 +1,7 @@
 import React from "react";
-import { render, fireEvent, cleanup, route } from "../../test-utils";
-import "@testing-library/jest-dom/extend-expect";
+import { render, fireEvent, route } from "../../test-utils";
 import { RecipeIndexPage as Index } from "../../src/screens/RecipeIndexPage/RecipeIndexPage";
 import recipes from "../../src/api-data/recipes";
-
-afterEach(cleanup);
 
 describe("Recipe Index Page", () => {
   it("should render the index page with the list of recipes", () => {
