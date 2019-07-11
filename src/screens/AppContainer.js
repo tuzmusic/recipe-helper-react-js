@@ -1,10 +1,10 @@
 // @flow
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import RecipeShowPage from "./RecipeShowPage";
+import RecipeShowPage from "./RecipeShowPage/RecipeShowPage";
 import RecipeIndexPage from "./RecipeIndexPage/RecipeIndexPage";
 
-export class AppContainer extends Component<Object> {
+class AppContainer extends Component<Object> {
   render() {
     return (
       <div>

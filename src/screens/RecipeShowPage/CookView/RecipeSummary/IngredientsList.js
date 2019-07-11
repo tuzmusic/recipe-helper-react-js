@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import type Ingredient from "../../models/Ingredient";
+import type Ingredient from "../../../../models/Ingredient";
 
 type Props = { ingredients: Ingredient[] };
 

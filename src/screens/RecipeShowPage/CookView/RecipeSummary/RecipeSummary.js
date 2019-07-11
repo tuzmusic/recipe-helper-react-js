@@ -1,8 +1,12 @@
+// @flow
 import React from "react";
-import IngredientsList from "./RecipeSummary/IngredientsList";
-import InstructionsList from "./RecipeSummary/InstructionsList";
+import IngredientsList from "./IngredientsList";
+import InstructionsList from "./InstructionsList";
+import type Recipe from "../../../../models/Recipe";
 
-const RecipeSummary = ({ recipe, currentStep }) => {
+type Props = { recipe: Recipe, currentStep: number };
+
+const RecipeSummary = ({ recipe, currentStep }: Props) => {
   return (
     <div className="recipe-summary">
       <h1 id="recipe-title">{recipe.title}</h1>

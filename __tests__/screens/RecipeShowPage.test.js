@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { shallow, mount } from "enzyme";
-import { RecipeShowPage } from "../../src/screens/RecipeShowPage";
+import { RecipeShowPage } from "../../src/screens/RecipeShowPage/RecipeShowPage";
 import recipes from "../../src/api-data/recipes";
 
 describe("Recipe Show Page", () => {

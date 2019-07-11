@@ -1,13 +1,16 @@
+// @flow
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import CookView from "../containers/CookView";
+import CookView from "./CookView/CookView";
+import type Recipe from "../../models/Recipe";
 
-export class RecipeShowPage extends Component {
+type Props = { recipes: Recipe[], match: Object };
+
+export class RecipeShowPage extends Component<Props> {
   render() {
     const recipe = this.props.recipes.find(
       r => r.id === this.props.match.params.id
     );
-
     return <CookView recipe={recipe} />;
   }
 }

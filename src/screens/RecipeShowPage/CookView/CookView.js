@@ -1,8 +1,11 @@
+// @flow
 import React, { Component } from "react";
-import RecipeSummary from "../screens/RecipeSummary";
-import RecipeSession from "../screens/RecipeSession";
+import RecipeSummary from "./RecipeSummary/RecipeSummary";
+import RecipeSession from "./RecipeSession/RecipeSession";
 
-class CookView extends Component {
+type Props = Object;
+type State = { currentStep: number };
+class CookView extends Component<Props, State> {
   state = { currentStep: 0 };
 
   nextStep() {

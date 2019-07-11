@@ -1,6 +1,9 @@
+// @flow
 import React from "react";
 
-const InstructionsList = ({ steps, currentStep }) => {
+type Props = { steps: Object[], currentStep: number };
+
+const InstructionsList = ({ steps, currentStep }: Props) => {
   return (
     <div className="instructions-list">
       <h3>Instructions</h3>

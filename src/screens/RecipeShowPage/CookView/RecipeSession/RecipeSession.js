@@ -1,6 +1,20 @@
+// @flow
 import React from "react";
+import type Recipe from "../../../../models/Recipe";
 
-const RecipeSession = ({ recipe, currentStep, onNextClick, onPrevClick }) => {
+type Props = {
+  recipe: Recipe,
+  currentStep: number,
+  onNextClick: Function,
+  onPrevClick: Function
+};
+
+const RecipeSession = ({
+  recipe,
+  currentStep,
+  onNextClick,
+  onPrevClick
+}: Props) => {
   return (
     <div className="recipe-session">
       <h3>
