@@ -8,25 +8,7 @@ import RecipeList from "./RecipeIndexPage/RecipeList";
 
 class AppContainer extends Component<Object> {
   render() {
-    return (
-      <div>
-        <div style={styles.appContainer}>
-          <Router>
-            <Route
-              exact
-              path="/"
-              render={() => <RecipeList recipes={this.props.recipes} />}
-            />
-            <Route
-              path="/recipes/:id/:slug"
-              render={routerProps => {
-                return <RecipeShowPage {...routerProps} />;
-              }}
-            />
-          </Router>
-        </div>
-      </div>
-    );
+    return <RecipeIndexPage />;
   }
 }
 
