@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import RecipeIndexPage from "./RecipeIndexPage/RecipeIndexPage";
+import RecipeNewPage from "./RecipeNewPage/RecipeNewPage";
 import { connect } from "react-redux";
 import RecipeList from "./RecipeIndexPage/RecipeList";
 
@@ -12,6 +13,7 @@ class AppContainer extends Component<Object> {
         <div style={styles.appContainer}>
           <Header />
           <Route exact path="/" component={RecipeIndexPage} />
+          <Route exact path="/recipes/new" component={RecipeNewPage} />
         </div>
       </Router>
     );
@@ -36,10 +38,9 @@ const Header = props => {
 };
 
 const styles = {
-  header: { backgroundColor: "blue" },
+  header: { backgroundColor: "blue", padding: 10 },
   appContainer: {
     flex: 1,
-    padding: 10,
     backgroundColor: "navy",
     color: "white"
   }

@@ -29,18 +29,8 @@ export class RecipeIndexPage extends Component<Props> {
         </div>
       </div>
     );
-
-    // return <RecipeList recipes={this.props.recipes} />;
   }
 }
 export default connect(({ recipes }) => ({ recipes: recipes.recipes }))(
   RecipeIndexPage
 );
-
-const styles = {
-  appContainer: {
-    flex: 1,
-    backgroundColor: "navy",
-    color: "white"
-  }
-};

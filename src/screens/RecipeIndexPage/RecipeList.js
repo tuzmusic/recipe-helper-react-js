@@ -7,12 +7,12 @@ type Props = { recipes: Recipe[] };
 
 export const RecipeList = ({ recipes }: Props) => {
   return (
-    <div style={styles.recipeList}>
+    <div style={styles.container}>
       <h1>Recipes</h1>
-      <ul className="recipe-list">
+      <ul>
         {recipes.map((recipe, i) => {
           return (
-            <li key={i}>
+            <li style={styles.listItem} key={i}>
               <Link to={`/recipes/${recipe.id}/${recipe.slug}`}>
                 {recipe.title}
               </Link>
@@ -24,9 +24,4 @@ export const RecipeList = ({ recipes }: Props) => {
   );
 };
 export default RecipeList;
-
-const styles = {
-  recipeList: {
-    padding: 10
-  }
-};
+const styles = { container: { padding: 10 }, listItem: { padding: 2 } };
