@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import RecipeIndexPage from "./RecipeIndexPage/RecipeIndexPage";
-import RecipeNewPage from "./RecipeNewPage/RecipeNewPage";
+import NewRecipePage from "./NewRecipePage/NewRecipePage";
 import { connect } from "react-redux";
 import RecipeList from "./RecipeIndexPage/RecipeList";
 
@@ -13,7 +13,7 @@ class AppContainer extends Component<Object> {
         <div style={styles.appContainer}>
           <Header />
           <Route exact path="/" component={RecipeIndexPage} />
-          <Route exact path="/recipes/new" component={RecipeNewPage} />
+          <Route exact path="/recipes/new" component={NewRecipePage} />
         </div>
       </Router>
     );
