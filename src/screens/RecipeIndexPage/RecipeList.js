@@ -7,7 +7,7 @@ type Props = { recipes: Recipe[] };
 
 export const RecipeList = ({ recipes }: Props) => {
   return (
-    <div>
+    <div style={styles.recipeList}>
       <h1>Recipes</h1>
       <ul className="recipe-list">
         {recipes.map((recipe, i) => {
@@ -24,3 +24,9 @@ export const RecipeList = ({ recipes }: Props) => {
   );
 };
 export default RecipeList;
+
+const styles = {
+  recipeList: {
+    padding: 10
+  }
+};

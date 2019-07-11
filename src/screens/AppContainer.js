@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import RecipeShowPage from "./RecipeShowPage/RecipeShowPage";
 import RecipeIndexPage from "./RecipeIndexPage/RecipeIndexPage";
+import { connect } from "react-redux";
+import RecipeList from "./RecipeIndexPage/RecipeList";
 
 class AppContainer extends Component<Object> {
   render() {
@@ -10,7 +12,11 @@ class AppContainer extends Component<Object> {
       <div>
         <div style={styles.appContainer}>
           <Router>
-            <Route exact path="/" component={RecipeIndexPage} />
+            <Route
+              exact
+              path="/"
+              render={() => <RecipeList recipes={this.props.recipes} />}
+            />
             <Route
               path="/recipes/:id/:slug"
               render={routerProps => {
@@ -24,7 +30,9 @@ class AppContainer extends Component<Object> {
   }
 }
 
-export default AppContainer;
+export default connect(({ recipes }) => ({ recipes: recipes.recipes }))(
+  AppContainer
+);
 
 const styles = {
   appContainer: {
