@@ -16,10 +16,4 @@ describe("Recipe Index Page", () => {
     fireEvent.click(cookiesLink);
     expect(getByText(/Mix ingredients/)).toExist();
   });
-
-  it("should have links to different parts of the app", () => {
-    const { container, getByText } = route(<Index recipes={recipes} />);
-    expect(container.innerHTML).toMatch("Cook</a>");
-    expect(container.innerHTML).toMatch("New Recipe</a>");
-  });
 });

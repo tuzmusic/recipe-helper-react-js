@@ -12,9 +12,7 @@ class AppContainer extends Component<Object> {
   }
 }
 
-export default connect(({ recipes }) => ({ recipes: recipes.recipes }))(
-  AppContainer
-);
+export default AppContainer;
 
 const styles = {
   appContainer: {
