@@ -12,7 +12,7 @@ export class RecipeIndexPage extends Component<Props> {
   render() {
     return (
       <div>
-        <div style={styles.appContainer}>
+        <div>
           <Router>
             <Route
               exact
