@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { render, fireEvent } from "../../test-utils";
 import ControlledInput from "../../src/components/ControlledInput";
+import { mount } from "enzyme";
 
 class Wrapper extends Component {
-  state = { text: "" };
+  state = {};
   render() {
     return (
       <div>
@@ -13,25 +14,45 @@ class Wrapper extends Component {
   }
 }
 
-function renderWithProps(props) {
-  return render(<Wrapper inputProps={props} />);
-}
+const renderWithProps = props => render(<Wrapper inputProps={props} />);
+
+const val = text => ({ target: { value: text } });
 
 describe("ControlledInput", () => {
-  const propName = "Text";
-  const { container, getByText, getByTestId } = renderWithProps({
-    label: propName
-  });
+  const label = "Text";
+  const { container, getByText, getByTestId } = renderWithProps({ label });
   const input = container.querySelector("input");
+
   it("should display a label based on the label prop", () => {
-    expect(container.innerHTML).toMatch(propName);
+    expect(container.innerHTML).toMatch(label);
   });
+
   it("should update the state and display its value when the text is changed", () => {
-    fireEvent.input(input, { target: { value: "things" } });
+    fireEvent.input(input, val("things"));
     expect(input).toHaveValue("things");
   });
-  xit("should be configurable as a text area", () => {
-    expect;
+
+  it("should accept a propName different from the label", () => {
+    const propName = "otherName";
+    const wrapper = mount(<Wrapper inputProps={{ propName, label }} />);
+    wrapper.find("input").simulate("change", val("Hello"));
+    expect(wrapper.state()).toEqual({ otherName: "Hello" });
   });
-  xit("should take a custom onChange method", () => {});
+
+  it("should be configurable as a text area", () => {
+    const { container } = renderWithProps({ label, textArea: true });
+    const area = container.querySelector("textarea");
+    fireEvent.input(area, val("things"));
+    expect(area).toHaveValue("things");
+  });
+
+  it("should take a custom onChange method", () => {
+    const { container } = renderWithProps({
+      label,
+      onChange: e => console.log("hello")
+    });
+    console.log = jest.fn();
+    fireEvent.input(container.querySelector("input"), val("whatever"));
+    expect(console.log).toHaveBeenCalledWith("hello");
+  });
 });

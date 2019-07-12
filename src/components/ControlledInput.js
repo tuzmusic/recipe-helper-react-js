@@ -5,19 +5,19 @@ type Props = {
   label: string,
   propName?: string,
   binder: Component<Object, Object>,
-  onChange?: Object => void
+  onChange?: Object => void,
+  textArea?: boolean
 };
 
 class ControlledInput extends Component<Props> {
   render() {
     const props = this.props;
     const propName = props.propName || props.label.toLowerCase();
-
+    const TagType = props.textArea ? "textarea" : "input";
     return (
       <div style={props.containerStyle}>
         <p>{props.label}</p>
-        <input
-          type="text"
+        <TagType
           label={props.label}
           onChange={
             this.props.onChange ||
@@ -25,8 +25,8 @@ class ControlledInput extends Component<Props> {
               props.binder.setState({ [propName]: e.target.value });
             })
           }
-          value={props.binder.state[propName]}
-        ></input>
+          value={props.binder.state[propName] || ""}
+        ></TagType>
       </div>
     );
   }
