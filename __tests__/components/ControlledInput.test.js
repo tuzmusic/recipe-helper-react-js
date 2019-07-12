@@ -6,9 +6,10 @@ import { mount } from "enzyme";
 class Wrapper extends Component {
   state = {};
   render() {
+    const p = { state: this.state, setState: this.setState.bind(this) };
     return (
       <div>
-        <ControlledInput binder={this} {...this.props.inputProps} />
+        <ControlledInput {...p} {...this.props.inputProps} />
       </div>
     );
   }
@@ -42,7 +43,7 @@ describe("ControlledInput", () => {
   it("should be configurable as a text area", () => {
     const { container } = renderWithProps({ label, textArea: true });
     const area = container.querySelector("textarea");
-    fireEvent.input(area, val("things"));
+    fireEvent.input(area, val("things")); // implicitly asserts the textarea's existence
     expect(area).toHaveValue("things");
   });
 
@@ -54,5 +55,14 @@ describe("ControlledInput", () => {
     console.log = jest.fn();
     fireEvent.input(container.querySelector("input"), val("whatever"));
     expect(console.log).toHaveBeenCalledWith("hello");
+  });
+
+  it("can pass along any other props", () => {
+    const { getByTestId } = renderWithProps({
+      "data-testid": "input",
+      placeholder: "some text",
+      label: "whatever"
+    });
+    expect(getByTestId("input")).toHaveAttribute("placeholder", "some text");
   });
 });
