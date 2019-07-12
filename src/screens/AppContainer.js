@@ -3,8 +3,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import RecipeIndexPage from "./RecipeIndexPage/RecipeIndexPage";
 import NewRecipePage from "./NewRecipePage/NewRecipePage";
-import { connect } from "react-redux";
-import RecipeList from "./RecipeIndexPage/RecipeList";
 
 class AppContainer extends Component<Object> {
   render() {
