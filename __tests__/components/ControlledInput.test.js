@@ -1,17 +1,15 @@
+// @flow
 import React, { Component } from "react";
 import { render, fireEvent } from "../../test-utils";
 import ControlledInput from "../../src/components/ControlledInput";
 import { mount } from "enzyme";
 
-class Wrapper extends Component {
+class Wrapper extends Component<Object, Object> {
   state = {};
   render() {
-    const p = { state: this.state, setState: this.setState.bind(this) };
-    return (
-      <div>
-        <ControlledInput {...p} {...this.props.inputProps} />
-      </div>
-    );
+    const setterFn = (k, v) => this.setState({ [k]: v });
+    const p = { state: this.state, setterFn: setterFn.bind(this) };
+    return <ControlledInput {...p} {...this.props.inputProps} />;
   }
 }
 
@@ -51,10 +49,12 @@ describe("ControlledInput", () => {
     const { container } = renderWithProps({
       label,
       onChange: e => console.log("hello")
+      // setterFn: null
     });
-    console.log = jest.fn();
+    const spy = jest.spyOn(console, "log").mockImplementation(() => {});
     fireEvent.input(container.querySelector("input"), val("whatever"));
-    expect(console.log).toHaveBeenCalledWith("hello");
+    expect(spy).toHaveBeenCalledWith("hello");
+    spy.mockRestore();
   });
 
   it("can pass along any other props", () => {

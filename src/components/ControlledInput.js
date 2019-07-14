@@ -5,10 +5,10 @@ type Props = {
   labelStyle?: Object,
   label: string,
   propName?: string,
-  setState: Object => mixed,
   state: Object,
   onChange?: Object => void,
-  textArea?: boolean
+  textArea?: boolean,
+  setterFn?: (key: string, value: mixed) => void
 };
 
 class ControlledInput extends Component<Props> {
@@ -16,8 +16,8 @@ class ControlledInput extends Component<Props> {
     const props = this.props;
     const propertyName = props.propName || props.label.toLowerCase();
     const TagType = props.textArea ? "textarea" : "input";
-    // only pass valid props to DOM element (remove any custom props)
-    const { propName, setState, textArea, ...domProps } = props;
+    // only pass valid props to DOM element (remove any problematic custom props)
+    const { setterFn, propName, textArea, state, ...domProps } = props;
     return (
       <div style={props.containerStyle}>
         <p style={props.labelStyle}>{props.label}</p>
@@ -26,11 +26,9 @@ class ControlledInput extends Component<Props> {
           label={props.label} // actually could get passed automatically, but it's important so I'm leaving it in the code
           onChange={
             this.props.onChange ||
-            (e => {
-              this.props.setState({ [propertyName]: e.target.value });
-            })
+            (setterFn ? e => setterFn(propertyName, e.target.value) : null)
           }
-          value={props.state[propertyName] || ""}
+          value={state[propertyName] || ""}
         ></TagType>
       </div>
     );
