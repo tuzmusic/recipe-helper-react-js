@@ -3,6 +3,7 @@ import React, { Component } from "react";
 type Props = {
   containerStyle?: Object,
   labelStyle?: Object,
+  inputStyle?: Object,
   label: string,
   propName?: string,
   state: Object,
@@ -23,6 +24,7 @@ class ControlledInput extends Component<Props> {
         <p style={props.labelStyle}>{props.label}</p>
         <TagType
           {...domProps}
+          style={props.inputStyle}
           label={props.label} // actually could get passed automatically, but it's important so I'm leaving it in the code
           onChange={
             this.props.onChange ||
