@@ -19,7 +19,7 @@ const val = text => ({ target: { value: text } });
 
 describe("ControlledInput", () => {
   const label = "Text";
-  const { container, getByText, getByTestId } = renderWithProps({ label });
+  const { container } = renderWithProps({ label });
   const input = container.querySelector("input");
 
   it("should display a label based on the label prop", () => {
@@ -46,15 +46,12 @@ describe("ControlledInput", () => {
   });
 
   it("should take a custom onChange method", () => {
-    const { container } = renderWithProps({
-      label,
-      onChange: e => console.log("hello")
-      // setterFn: null
-    });
-    const spy = jest.spyOn(console, "log").mockImplementation(() => {});
+    let x = false;
+    const onChange = () => (x = true);
+    const { container } = renderWithProps({ label, onChange });
     fireEvent.input(container.querySelector("input"), val("whatever"));
-    expect(spy).toHaveBeenCalledWith("hello");
-    spy.mockRestore();
+    expect(x).toBe(true);
+    // should probably test that setterFn wasn't called, or something like that?
   });
 
   it("can pass along any other props", () => {
