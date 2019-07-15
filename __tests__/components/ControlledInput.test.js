@@ -1,13 +1,14 @@
 // @flow
 import React, { Component } from "react";
 import { render, fireEvent } from "../../test-utils";
-import ControlledInput from "../../src/components/ControlledInput";
+import ControlledInput, {
+  setterFn
+} from "../../src/components/ControlledInput";
 import { mount } from "enzyme";
 
 class Wrapper extends Component<Object, Object> {
   state = {};
   render() {
-    const setterFn = (k, v) => this.setState({ [k]: v });
     const p = { state: this.state, setterFn: setterFn.bind(this) };
     return <ControlledInput {...p} {...this.props.inputProps} />;
   }

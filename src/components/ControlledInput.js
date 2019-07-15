@@ -12,6 +12,10 @@ type Props = {
   setterFn?: (key: string, value: mixed) => void
 };
 
+export function setterFn(key: string, value: mixed) {
+  this.setState({ [key]: value });
+}
+
 class ControlledInput extends Component<Props> {
   render() {
     const props = this.props;
