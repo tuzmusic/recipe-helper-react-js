@@ -22,13 +22,24 @@ class ControlledInput extends Component<Props> {
     const propertyName = props.propName || props.label.toLowerCase();
     const TagType = props.textArea ? "textarea" : "input";
     // only pass valid props to DOM element (remove any problematic custom props)
-    const { setterFn, propName, textArea, state, ...domProps } = props;
+    const {
+      setterFn,
+      propName,
+      textArea,
+      state,
+      containerStyle,
+      inputStyle,
+      ...domProps
+    } = props;
     return (
       <div style={props.containerStyle}>
-        <p style={props.labelStyle}>{props.label}</p>
+        <label for={props.label} style={props.labelStyle}>
+          {props.label}
+        </label>
         <TagType
           {...domProps}
           style={props.inputStyle}
+          id={props.label}
           label={props.label} // actually could get passed automatically, but it's important so I'm leaving it in the code
           onChange={
             this.props.onChange ||

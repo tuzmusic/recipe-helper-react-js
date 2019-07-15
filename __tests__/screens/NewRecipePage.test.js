@@ -7,10 +7,11 @@ fdescribe("New Recipe Page", () => {
   function inputCalled(name) {
     return `<input label="${name}"`;
   }
+  const $ = document.querySelector;
   it("has a recipe form", () => {
-    const { container, getByText } = route(<NewRecipePage />);
-    expect(container.innerHTML).toMatch(inputCalled("title"));
-    expect(container.innerHTML).toMatch(inputCalled("ingredients"));
-    expect(container.innerHTML).toMatch(inputCalled("instructions"));
+    const { getByLabelText } = route(<NewRecipePage />);
+    expect(getByLabelText("Title")).toBeDefined();
+    expect(getByLabelText("Tngredients")).toBeDefined();
+    expect(getByLabelText("Tnstructions")).toBeDefined();
   });
 });
