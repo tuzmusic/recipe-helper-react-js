@@ -33,7 +33,7 @@ class ControlledInput extends Component<Props> {
     } = props;
     return (
       <div style={props.containerStyle}>
-        <label for={props.label} style={props.labelStyle}>
+        <label htmlFor={props.label} style={props.labelStyle}>
           {props.label}
         </label>
         <TagType

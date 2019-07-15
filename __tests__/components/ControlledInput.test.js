@@ -1,10 +1,10 @@
 // @flow
 import React, { Component } from "react";
 import { render, fireEvent } from "../../test-utils";
+import { mount } from "enzyme";
 import ControlledInput, {
   setterFn
 } from "../../src/components/ControlledInput";
-import { mount } from "enzyme";
 
 class Wrapper extends Component<Object, Object> {
   state = {};

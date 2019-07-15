@@ -26,8 +26,12 @@ export class NewRecipePage extends Component<Props, State> {
       <div style={styles.container}>
         <h1>NEW RECIPE</h1>
         <ControlledInput {...p} label="Title" />
+        <br />
         <ControlledInput {...p} label="Ingredients" textArea />
+        <br />
         <ControlledInput {...p} label="Instructions" textArea />
+        <br />
+        <button>Save Recipe</button>
       </div>
     );
   }
@@ -44,6 +48,7 @@ const styles = {
     minWidth: Math.min(window.innerWidth * 0.9, 500)
   },
   input: {
-    width: "100%"
+    width: "100%",
+    marginTop: 5
   }
 };
