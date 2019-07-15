@@ -1,7 +1,7 @@
 module.exports = {
-  verbose: true,
+  verbose: false,
   clearMocks: true,
-  collectCoverage: true,
+  collectCoverage: false,
   setupFilesAfterEnv: [
     "@testing-library/react/cleanup-after-each",
     "<rootDir>/setupTest.js"

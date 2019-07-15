@@ -19,6 +19,6 @@ describe("New Recipe Page", () => {
   });
 
   describe("operation", () => {
-    it("creates a recipe", () => {});
+    xit("creates a recipe", () => {});
   });
 });
