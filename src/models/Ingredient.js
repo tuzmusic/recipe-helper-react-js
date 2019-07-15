@@ -3,7 +3,12 @@
 export default class Ingredient {
   text: string;
 
-  constructor(text: string) {
-    this.text = text;
+  constructor(arg: PotentialConstructorArgument) {
+    if (typeof arg === "string") this.text = arg;
+    else if (typeof arg === "object") {
+      this.text = arg.text;
+    }
   }
 }
+
+type PotentialConstructorArgument = string | { text: string };

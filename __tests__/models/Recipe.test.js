@@ -1,27 +1,24 @@
+// @flow
 import Recipe from "../../src/models/Recipe";
+import Ingredient from "../../src/models/Ingredient";
+import Instruction from "../../src/models/Instruction";
+import type { RecipeApiObject } from "../../src/models/Recipe";
 
-describe("Recipe.create", () => {
-  const ingredientsText = `1 cup of sugar
-  3 eggs
-  20 raisins`;
-  const instructionsText = `do this
-    do that
-    eat
-    clean up`;
-  const recipe = Recipe.create({ ingredientsText, instructionsText });
-  it("splits ingredients body text into ingredients", () => {
-    expect(recipe.ingredients.map(i => i.text)).toEqual([
-      "1 cup of sugar",
-      "3 eggs",
-      "20 raisins"
-    ]);
-  });
-  it("splits instructions body text into instructions", () => {
-    expect(recipe.instructions.map(i => i.text)).toEqual([
-      "do this",
-      "do that",
-      "eat",
-      "clean up"
-    ]);
+describe("Recipe.fromApi", () => {
+  it("takes an API response and returns a recipe", () => {
+    const ings = ["1 cup of sugar", "3 eggs"];
+    const steps = ["do this", "do that"];
+    const obj: RecipeApiObject = {
+      title: "A Recipe",
+      slug: "a-recipe",
+      id: 1,
+      ingredients: ings.map(i => ({ text: i })),
+      instructions: steps.map(i => ({ text: i }))
+    };
+    const recipe = Recipe.fromApi(obj);
+    expect(recipe.ingredients).toStrictEqual(ings.map(i => new Ingredient(i)));
+    expect(recipe.instructions).toStrictEqual(
+      steps.map(i => new Instruction(i))
+    );
   });
 });
