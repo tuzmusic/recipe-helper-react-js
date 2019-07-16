@@ -4,17 +4,19 @@ import RecipeController from "../../__mocks__/api/RecipeController";
 import { startMockServer } from "../../__mocks__/api/mockAdapter";
 
 describe("mockApi", () => {
+  const ings = ["1 cup of sugar", "3 eggs", "20 raisins"];
+  const steps = ["do this", "do that", "eat", "clean up"];
+  const title = "Sample recipe";
+  const ingredientsText = ings.join("\n");
+  const instructionsText = steps.join("\n");
+  const recipeObj = { title, ingredientsText, instructionsText };
+
+  const recipe = RecipeController.create({
+    title,
+    ingredientsText,
+    instructionsText
+  });
   describe("RecipeController.create", () => {
-    const ings = ["1 cup of sugar", "3 eggs", "20 raisins"];
-    const steps = ["do this", "do that", "eat", "clean up"];
-    const title = "Sample recipe";
-    const ingredientsText = ings.join("\n");
-    const instructionsText = steps.join("\n");
-    const recipe = RecipeController.create({
-      title,
-      ingredientsText,
-      instructionsText
-    });
     it("assigns the title, id, and slug", () => {
       expect(recipe.title).toEqual(title);
       expect(recipe.slug).toEqual("sample-recipe");
@@ -32,7 +34,8 @@ describe("mockApi", () => {
     startMockServer();
 
     it("takes a RecipeFormObject and returns a RecipeApiObject", async () => {
-      // const res = await axios.post(URLs.createRecipe)
+      const res = await axios.post(URLs.createRecipe, recipeObj);
+      expect(res.data).toEqual(recipe);
     });
   });
 });
