@@ -2,20 +2,7 @@
 import Ingredient from "./Ingredient";
 import Instruction from "./Instruction";
 
-export default class Recipe {
-  title: string;
-  slug: string;
-  id: number;
-  ingredients: Ingredient[];
-  instructions: Instruction[];
-
-  static fromApi(obj: RecipeApiObject): Recipe {
-    const recipe = new Recipe();
-    recipe.ingredients = obj.ingredients.map(i => new Ingredient(i));
-    recipe.instructions = obj.instructions.map(i => new Instruction(i));
-    return recipe;
-  }
-}
+// #region TYPES
 export type RecipeApiObject = {
   title: string,
   slug: string,
@@ -30,3 +17,19 @@ export type IngredientApiObject = {
 export type InstructionApiObject = {
   text: string
 };
+// #endregion
+
+export default class Recipe {
+  title: string;
+  slug: string;
+  id: number;
+  ingredients: Ingredient[];
+  instructions: Instruction[];
+
+  static fromApi(obj: RecipeApiObject): Recipe {
+    const recipe = new Recipe();
+    recipe.ingredients = obj.ingredients.map(i => new Ingredient(i));
+    recipe.instructions = obj.instructions.map(i => new Instruction(i));
+    return recipe;
+  }
+}

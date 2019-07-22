@@ -11,23 +11,19 @@ type Props = { recipes: Recipe[] };
 export class RecipeIndexPage extends Component<Props> {
   render() {
     return (
-      <div>
-        <div>
-          <Router>
-            <Route
-              exact
-              path="/"
-              render={() => <RecipeList recipes={this.props.recipes} />}
-            />
-            <Route
-              path="/recipes/:id/:slug"
-              render={routerProps => {
-                return <RecipeShowPage {...routerProps} />;
-              }}
-            />
-          </Router>
-        </div>
-      </div>
+      <Router>
+        <Route
+          exact
+          path="/"
+          render={() => <RecipeList recipes={this.props.recipes} />}
+        />
+        <Route
+          path="/recipes/:id/:slug"
+          render={routerProps => {
+            return <RecipeShowPage {...routerProps} />;
+          }}
+        />
+      </Router>
     );
   }
 }
