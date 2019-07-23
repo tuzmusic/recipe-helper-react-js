@@ -1,5 +1,5 @@
 // @flow
-import type Recipe from "../../models/Recipe";
+import Recipe from "../../models/Recipe";
 import mockRecipes from "../../api-data/recipes";
 
 type State = { recipes: Recipe[] };
@@ -9,6 +9,8 @@ type RecipeAction =
   | { type: "GET_RECIPES_SUCCESS", recipes: Recipe[] }
   | { type: "CREATE_RECIPE_SUCCESS", recipe: Recipe }
   | { type: "GET_RECIPES_FAILURE" | "CREATE_RECIPE_FAILURE", error: Error };
+
+const recipes = mockRecipes.map(r => Recipe.fromApi(r));
 
 const initialState: State = {
   recipes: mockRecipes

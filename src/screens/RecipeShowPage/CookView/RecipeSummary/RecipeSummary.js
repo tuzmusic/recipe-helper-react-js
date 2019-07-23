@@ -11,7 +11,7 @@ const RecipeSummary = ({ recipe, currentStep }: Props) => {
     <div className="recipe-summary">
       <h1 id="recipe-title">{recipe.title}</h1>
       <IngredientsList ingredients={recipe.ingredients} />
-      <InstructionsList steps={recipe.steps} currentStep={currentStep} />
+      <InstructionsList steps={recipe.instructions} currentStep={currentStep} />
     </div>
   );
 };

@@ -8,7 +8,7 @@ export default [
       { text: "1 tbsp sugar" },
       { text: "1 bag chocolate chips" }
     ],
-    steps: [
+    instructions: [
       { text: "Mix ingredients" },
       { text: "Bake ingredients" },
       { text: "Eat cookies!" }
@@ -24,7 +24,7 @@ export default [
       { text: "1/2 cup onion, diced" },
       { text: "1/4 cup cilantro, chopped" }
     ],
-    steps: [
+    instructions: [
       { text: "Mix ingredients" },
       { text: "Refridgerate for 30 minutes" },
       { text: "Eat with chips" }
