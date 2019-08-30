@@ -9,7 +9,7 @@ class AppContainer extends Component<Object> {
     return (
       <Router>
         <div style={styles.appContainer}>
-          <Header />
+          {/* <Header /> */}
           <Route exact path="/" component={RecipeIndexPage} />
           <Route exact path="/recipes/new" component={NewRecipePage} />
         </div>
@@ -27,9 +27,9 @@ const Header = props => {
         <li>
           <Link to="/">Recipes</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/recipes/new">New Recipe</Link>
-        </li>
+        </li> */}
       </ul>
     </header>
   );
