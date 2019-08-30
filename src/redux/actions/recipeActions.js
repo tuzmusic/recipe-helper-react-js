@@ -1,6 +1,7 @@
 // @flow
 import * as Types from "../RecipeTypes";
 import mockRecipes from "../../api-data/recipes";
+import Recipe from "../../models/Recipe";
 
 export function getRecipes(): Types.GET_RECIPES_START {
   // For mocking:

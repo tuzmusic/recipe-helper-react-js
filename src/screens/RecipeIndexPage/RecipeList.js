@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 type Props = { recipes: Recipe[] };
 
 export const RecipeList = ({ recipes }: Props) => {
+  // console.log(recipes);
   return (
     <div style={styles.container}>
       <h1>Recipes</h1>

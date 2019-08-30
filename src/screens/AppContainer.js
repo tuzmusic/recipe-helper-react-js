@@ -3,22 +3,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import RecipeIndexPage from "./RecipeIndexPage/RecipeIndexPage";
 import NewRecipePage from "./NewRecipePage/NewRecipePage";
-
-class AppContainer extends Component<Object> {
-  render() {
-    return (
-      <Router>
-        <div style={styles.appContainer}>
-          {/* <Header /> */}
-          <Route exact path="/" component={RecipeIndexPage} />
-          <Route exact path="/recipes/new" component={NewRecipePage} />
-        </div>
-      </Router>
-    );
-  }
-}
-
-export default AppContainer;
+import { getRecipes } from "../redux/actions/recipeActions";
+import { connect } from "react-redux";
 
 const Header = props => {
   return (
@@ -34,6 +20,30 @@ const Header = props => {
     </header>
   );
 };
+
+class AppContainer extends Component<Object> {
+  componentDidMount() {
+    this.props.getRecipes();
+  }
+
+  render() {
+    return (
+      <Router>
+        <div style={styles.appContainer}>
+          <RecipeIndexPage />
+          {/* <Header />
+          <Route exact path="/" component={RecipeIndexPage} />
+          <Route exact path="/recipes/new" component={NewRecipePage} /> */}
+        </div>
+      </Router>
+    );
+  }
+}
+
+export default connect(
+  null,
+  { getRecipes }
+)(AppContainer);
 
 const styles = {
   header: { backgroundColor: "blue", padding: 10 },

@@ -27,7 +27,7 @@ export default class Recipe {
   instructions: Instruction[];
 
   static fromApi(obj: RecipeApiObject): Recipe {
-    const recipe = new Recipe();
+    const recipe: Recipe = Object.assign(new Recipe(), obj);
     recipe.ingredients = obj.ingredients.map(i => new Ingredient(i));
     recipe.instructions = obj.instructions.map(i => new Instruction(i));
     return recipe;

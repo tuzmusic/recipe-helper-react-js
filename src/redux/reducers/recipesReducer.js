@@ -12,7 +12,8 @@ type RecipeAction =
 const recipes = mockRecipes.map(r => Recipe.fromApi(r));
 
 const initialState: Types.RecipesState = {
-  recipes: [mockRecipes]
+  // recipes: mockRecipes,
+  recipes: []
 };
 
 export default function recipesReducer(

@@ -10,6 +10,7 @@ type Props = { recipes: Recipe[] };
 
 export class RecipeIndexPage extends Component<Props> {
   render() {
+    console.log(this.props.recipes);
     return (
       <Router>
         <Route
