@@ -1,8 +1,7 @@
 // @flow
 import Recipe from "../../models/Recipe";
 import mockRecipes from "../../api-data/recipes";
-
-type State = { recipes: Recipe[] };
+import * as Types from "../RecipeTypes";
 
 type RecipeAction =
   | { type: "GET_RECIPES_START" | "CREATE_RECIPE_START" }
@@ -12,14 +11,14 @@ type RecipeAction =
 
 const recipes = mockRecipes.map(r => Recipe.fromApi(r));
 
-const initialState: State = {
-  recipes: mockRecipes
+const initialState: Types.RecipesState = {
+  recipes: [mockRecipes]
 };
 
 export default function recipesReducer(
-  state: State = initialState,
-  action: RecipeAction
-): State {
+  state: Types.RecipesState = initialState,
+  action: Types.RecipeAction
+): Types.RecipesState {
   switch (action.type) {
     case "GET_RECIPES_SUCCESS":
       return { ...state, recipes: action.recipes };
