@@ -10,7 +10,8 @@ class CookView extends Component<Props, State> {
 
   nextStep() {
     console.log("from next", this.state.currentStep);
-    if (this.state.currentStep + 1 === this.props.recipe.steps.length) return;
+    if (this.state.currentStep + 1 === this.props.recipe.ingredients.length)
+      return;
     this.setState({ currentStep: this.state.currentStep + 1 });
   }
 
